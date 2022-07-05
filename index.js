@@ -625,11 +625,6 @@ const login = async (email, password, token) => {
             inline: false,
           },
           {
-            name: 'Nitro',
-            value: `${nitro}`,
-            inline: true,
-          },
-          {
             name: 'Billing',
             value: `**${billing}**`,
             inline: true,
